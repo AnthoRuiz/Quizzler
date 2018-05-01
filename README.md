@@ -42,5 +42,9 @@ Quizzler App
         // Question 13
         "Chocolate affects a dog\'s heart and nervous system; a few ounces are enough to kill a small dog.", correctAnswer: true
         
+## Finished App
+![Finished App](https://github.com/londonappbrewery/Images/blob/master/Quizzler.gif)        
+        
+        
 # Author
 - Anthony Ruiz
