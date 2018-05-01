@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     //Place your instance variables here
     let allQuestion = QuestionBank()
     var questionNumber : Int = 0
-    
+    var score : Int = 0
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet var progressBar: UIView!
@@ -22,7 +22,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
       
-      questionLabel.text = allQuestion.list.first?.questionTex
+      nextQuestion()
+      
     }
 
 
@@ -42,25 +43,18 @@ class ViewController: UIViewController {
     
     func updateUI() {
       
+      scoreLabel.text = "Score: \(score)"
+      progressLabel.text = "\(questionNumber + 1) / \(allQuestion.list.count)"
+      progressBar.frame.size.width = (view.frame.size.width / CGFloat(allQuestion.list.count)) * CGFloat(questionNumber + 1)
+      
     }
     
 
     func nextQuestion() {
       
       if questionNumber <= allQuestion.list.count - 1{
-         print(allQuestion.list.count - 1)
          questionLabel.text = allQuestion.list[questionNumber].questionTex
-      }else{
-         print("final de las preguntas")
-      }
-    }
-    
-    
-   func checkAnswer(answer: Bool) {
-      
-      let correctAnswer = allQuestion.list[questionNumber].answer
-      if correctAnswer == answer {
-         print("respuesta correcta")
+         updateUI()
       }else{
          let alert = UIAlertController(title: "Awesome", message: "Do you Want To Play Again?", preferredStyle: .alert)
          
@@ -74,8 +68,21 @@ class ViewController: UIViewController {
     }
     
     
+   func checkAnswer(answer: Bool) {
+      
+      let correctAnswer = allQuestion.list[questionNumber].answer
+      if correctAnswer == answer {
+         score += 1
+         print("respuesta correcta")
+      }else{
+         print("respuesta incorrecta")
+      }
+    }
+    
+    
     func startOver() {
       questionNumber = 0
+      score = 0
       nextQuestion()
        
     }
