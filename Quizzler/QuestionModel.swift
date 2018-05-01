@@ -3,7 +3,7 @@
 //  Quizzler
 //
 //  Created by Anthony Ruiz on 4/29/18.
-//  Copyright © 2018 London App Brewery. All rights reserved.
+//  Copyright © 2018 Jakaboy. All rights reserved.
 //
 
 import Foundation
